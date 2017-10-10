@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <section>
+        <header class="header">
+          <div class="row">
+            <div class="col-md-4">
+              <h1>Tasks</h1>
+            </div>
+            <div class="col-md-6">
+ 
+            </div>
+            <div class="col-md-2">
+              <button type = "button" class="btn btn-primary" (click)="redirectNewTaskPage()">Add Task</button>
+            </div>
+          </div>
+ 
+        </header>
+      </section>
+ 
+      <section class="main">
+ 
+        <table class="table" border="1px">
+          <thead>
+          <tr>
+            <th>Task ID</th>
+            <th>Task Name</th>
+            <th>Task Description</th>
+            <th>Assigned To</th>
+            <th>Assigned By</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of tasks">
+            <th scope="row">{{task.taskId}}</th>
+            <td>{{task.taskName}}</td>
+            <td>{{task.taskDescription}}</td>
+            <td>{{task.assignedTo}}</td>
+            <td>{{task.assignedBy}}</td>
+            <td><button type="button" class="btn btn-success" (click)="editTaskPage(task)">Edit</button></td>
+            <td><button type = "button" class = "btn btn-danger" (click)="deleteTaskPage(task)">Delete</button></td>
+          </tr>
+ 
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>
