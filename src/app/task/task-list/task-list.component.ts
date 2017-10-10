@@ -4,7 +4,7 @@ import {TaskService} from "../task.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-task-list',
+  //selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],
   providers: [TaskService]

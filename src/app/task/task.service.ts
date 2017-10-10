@@ -40,11 +40,11 @@ export class TaskService {
   }
 
   //update task
-  updateTask(task: Task): Observable<Task>{
-    return this.http.put(this.apiUrl, task)
-                    .map((res:Response) => res.json())
-                    .catch((error:any)=>Observable.throw(error.json().error || 'Server Error'));
-  }
+  //updateTask(task: Task): Observable<Task>{
+    //return this.http.put(this.apiUrl +'/'+task.taskId , task)
+      //              .map((res:Response) => res.json())
+        //            .catch((error:any)=>Observable.throw(error.json().error || 'Server Error'));
+  //}
 
 
 }

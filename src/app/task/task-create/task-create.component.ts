@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
-  selector: 'app-task-create',
+  //selector: 'app-task-create',
   templateUrl: './task-create.component.html',
   styleUrls: ['./task-create.component.css'],
   providers: [TaskService]
@@ -28,6 +28,7 @@ export class TaskCreateComponent implements OnInit, OnDestroy {
 
     this.sub = this.route.params.subscribe(params => {
       this.taskId = params['taskId'];
+      console.log(params);
     });
 
     this.taskForm = new FormGroup({
@@ -36,7 +37,7 @@ export class TaskCreateComponent implements OnInit, OnDestroy {
       assignedTo: new FormControl('', Validators.required),
       assignedBy: new FormControl('', Validators.required)
     });
-
+    console.log(this.taskId);
     if(this.taskId){
       this.taskService.findById(this.taskId).subscribe(
         task => {
@@ -47,6 +48,7 @@ export class TaskCreateComponent implements OnInit, OnDestroy {
                assignedTo: task.assignedTo,
                assignedBy: task.assignedBy,
              });
+             
         },error => {
           console.log(error);
         }
@@ -66,7 +68,7 @@ export class TaskCreateComponent implements OnInit, OnDestroy {
             this.taskForm.controls['taskDescription'].value,
             this.taskForm.controls['assignedTo'].value,
             this.taskForm.controls['assignedBy'].value);
-            this.taskService.updateTask(task).subscribe();
+            this.taskService.saveTask(task).subscribe();
       }else{
         let task: Task = new Task(null,
             this.taskForm.controls['taskName'].value,

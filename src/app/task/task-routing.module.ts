@@ -7,7 +7,7 @@ import {TaskCreateComponent} from './task-create/task-create.component';
 const routes: Routes = [
   {path:'task',component:TaskListComponent},
   {path:'task/create',component:TaskCreateComponent},
-  {path:'task/edit/:id',component:TaskCreateComponent}
+  {path:'task/edit/:taskId',component:TaskCreateComponent}
 ];
 
 @NgModule({
