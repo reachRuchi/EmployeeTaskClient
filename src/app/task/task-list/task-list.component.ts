@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Task} from "../task";
 import {TaskService} from "../task.service";
 import {Router} from "@angular/router";
+import {Cookie} from 'ng2-cookies/ng2-cookies';
 
 @Component({
   //selector: 'app-task-list',
@@ -22,11 +23,15 @@ export class TaskListComponent implements OnInit {
     this.taskService.findAll().subscribe(
       tasks =>{
         this.tasks = tasks;
+        localStorage.setItem("tasks",JSON.stringify(this.tasks));
+        Cookie.set("cookieSample",JSON.stringify(this.tasks));
+        console.log(this.tasks);
       },
       err =>{
         console.log(err);
       }
     );
+    
   }
 
   redirectNewTaskPage(){
@@ -43,12 +48,25 @@ export class TaskListComponent implements OnInit {
     if(task){
       this.taskService.deleteTaskById(task.taskId).subscribe(
         res => {
-          this.getAllTasks();
-          this.router.navigate(['/task']);
-          console.log('done');
+          //this.getAllTasks();
+          //console.log('done');
+          //this.router.navigate(['/task']);
         }
       );
+      
     }
+    this.router.navigate(['/task']);
+    
+    this.getAllTasks();
+    this.redirectTaskPage();
+  }
+
+  redirectTaskPage(){
+
+    this.router.navigate(['/task']);
+    
+    this.getAllTasks();
+    console.log("done");
   }
 
 }

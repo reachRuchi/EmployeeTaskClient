@@ -37,7 +37,8 @@ export class TaskService {
     return this.http.delete(this.apiUrl+'/'+ taskId)
                      .map((res:Response) => res.json())
                      .catch((error:any)=> Observable.throw(error.json().error || 'Server error'));
-  }
+                    
+    }
 
   //update task
   //updateTask(task: Task): Observable<Task>{
